@@ -20,8 +20,18 @@ class Boot{
 		$uri = str_replace('/_1', '', $_SERVER['REQUEST_URI']);
 		$uri = array_values(array_filter(explode('/', $uri)));
 
-		$path = array_shift($uri) .'/'.array_shift($uri);
-        $parm = array_shift($uri);
+        switch (count($uri)){
+            case 1:
+                $path = array_shift($uri);
+                break;
+            case 2:
+                $path = array_shift($uri) .'/'.array_shift($uri);
+                break;
+            default:
+                $path = array_shift($uri) .'/'.array_shift($uri);
+                $parm = array_shift($uri);
+                break;
+        }
 
 		$resp['path'] = "AppController@error";
         if(isset($this->route[$path])){
