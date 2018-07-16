@@ -15,6 +15,10 @@ function pre($cont){
     echo "<pre>"; print_r($cont); echo "</pre>";
 }
 
+function prex($cont){
+    echo "<pre>"; print_r($cont); echo "</pre>"; exit;
+}
+
 function __autoload($class){
     $arrFolder = ['core', 'app/controller', 'app/model', 'app/view'];
     foreach($arrFolder as $folder) {
