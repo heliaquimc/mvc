@@ -2,22 +2,19 @@
 
 session_start();
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+if($_SERVER['HTTP_HOST'] == 'localhost'){
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+}
 
 date_default_timezone_set('America/Sao_Paulo');
 
 define('_HEADER_', 'app/view/header');
 define('_FOOTER_', 'app/view/footer');
 
-function pre($cont){
-    echo "<pre>"; print_r($cont); echo "</pre>";
-}
-
-function prex($cont){
-    echo "<pre>"; print_r($cont); echo "</pre>"; exit;
-}
+function pre($cont){echo "<pre>"; print_r($cont); echo "</pre>";}
+function prex($cont){echo "<pre>"; print_r($cont); echo "</pre>"; exit;}
 
 function __autoload($class){
     $arrFolder = ['core', 'app/controller', 'app/model', 'app/view'];
