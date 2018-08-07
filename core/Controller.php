@@ -1,6 +1,8 @@
 <?php
 
 class Controller{
+    protected $gest = false;
+
     function view($file, $arrVar = array(), $layout = true){
         extract($arrVar);
         ob_start();

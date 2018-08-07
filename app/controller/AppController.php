@@ -3,7 +3,10 @@
 class AppController extends Controller{
 
     function home(){
-        $this->view('app/home');
+        if(!empty($_SESSION['userId'])){
+            $this->view('app/home');
+        }
+        $this->view('app/login', [], false);
     }
 
     function error(){
