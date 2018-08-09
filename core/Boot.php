@@ -17,8 +17,7 @@ class Boot{
 	}
 
 	function getUri(){
-		$uri = str_replace('/_1', '', $_SERVER['REQUEST_URI']);
-		$uri = array_values(array_filter(explode('/', $uri)));
+		$uri = array_values(array_filter(explode('/', $_SERVER['REQUEST_URI'])));
 
         switch (count($uri)){
             case 1:
@@ -32,6 +31,8 @@ class Boot{
                 $parm = array_shift($uri);
                 break;
         }
+
+        if(empty($_SESSION['userId']) && _AUTH_ && $path != '/') header('Location: /');
 
 		$resp['path'] = "AppController@error";
         if(isset($this->route[$path])){

@@ -1,7 +1,13 @@
 <?php
 
 class Controller{
-    protected $gest = false;
+
+    function __construct()
+    {
+        if(empty($_SESSION['userId']) && _AUTH_){
+            $this->view('app/login', [], false);
+        }
+    }
 
     function view($file, $arrVar = array(), $layout = true){
         extract($arrVar);

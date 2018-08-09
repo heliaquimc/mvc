@@ -10,6 +10,7 @@ if($_SERVER['HTTP_HOST'] == 'localhost'){
 
 date_default_timezone_set('America/Sao_Paulo');
 
+define('_AUTH_', false);
 define('_HEADER_', 'app/view/header');
 define('_FOOTER_', 'app/view/footer');
 
@@ -28,4 +29,5 @@ function __autoload($class){
 
 $b = new Boot();
 $b->setRoute('/', 'AppController@home');
+$b->setRoute('test', 'AppController@test');
 $b->init();
