@@ -11,8 +11,8 @@ if($_SERVER['HTTP_HOST'] == 'localhost'){
 date_default_timezone_set('America/Sao_Paulo');
 
 define('_AUTH_', true);
-define('_HEADER_', 'app/view/header');
-define('_FOOTER_', 'app/view/footer');
+define('_HEADER_', '../app/view/header');
+define('_FOOTER_', '../app/view/footer');
 
 function pre($cont){echo "<pre>"; print_r($cont); echo "</pre>";}
 function prex($cont){echo "<pre>"; print_r($cont); echo "</pre>"; exit;}
@@ -20,8 +20,8 @@ function prex($cont){echo "<pre>"; print_r($cont); echo "</pre>"; exit;}
 function __autoload($class){
     $arrFolder = ['core', 'app/controller', 'app/model', 'app/view'];
     foreach($arrFolder as $folder) {
-        if (file_exists("$folder/$class.php")) {
-            require_once "$folder/$class.php";
+        if (file_exists("../$folder/$class.php")) {
+            require_once "../$folder/$class.php";
             break;
         }
     }
