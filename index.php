@@ -10,7 +10,7 @@ if($_SERVER['HTTP_HOST'] == 'localhost'){
 
 date_default_timezone_set('America/Sao_Paulo');
 
-define('_AUTH_', false);
+define('_AUTH_', true);
 define('_HEADER_', 'app/view/header');
 define('_FOOTER_', 'app/view/footer');
 

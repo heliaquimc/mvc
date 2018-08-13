@@ -32,8 +32,6 @@ class Boot{
                 break;
         }
 
-        if(empty($_SESSION['userId']) && _AUTH_ && $path != '/') header('Location: /');
-
 		$resp['path'] = "AppController@error";
         if(isset($this->route[$path])){
             $resp['path'] = $this->route[$path];
