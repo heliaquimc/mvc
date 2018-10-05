@@ -17,6 +17,12 @@ class Boot{
 	}
 
 	function getUri(){
+        if(_AUTH_ && empty($_SESSION['usuario_id'])){
+            return array(
+                "path" => "AppController@login"
+            );
+        }
+
 		$uri = array_values(array_filter(explode('/', $_SERVER['REQUEST_URI'])));
 
         switch (count($uri)){
@@ -28,7 +34,7 @@ class Boot{
                 break;
             default:
                 $path = array_shift($uri) .'/'.array_shift($uri);
-                $parm = array_shift($uri);
+                $parm = $uri;
                 break;
         }
 

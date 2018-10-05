@@ -2,12 +2,7 @@
 
 class Controller{
 
-    function __construct()
-    {
-        if(empty($_SESSION['userId']) && _AUTH_){
-            $this->view('app/login', [], false);
-        }
-    }
+    protected $model;
 
     function view($file, $arrVar = array(), $layout = true){
         extract($arrVar);

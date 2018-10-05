@@ -2,6 +2,10 @@
 
 class AppController extends Controller{
 
+    function __construct(){
+        $this->model = new AppModel();
+    }
+
     function home(){
         $this->view('app/home');
     }
