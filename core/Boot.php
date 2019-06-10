@@ -5,11 +5,11 @@ class Boot{
 
 	function init(){
 		$route = $this->getUri();
-        list($ctrl, $act) = explode('@', $route['path']);
+        list($controller, $action) = $route['path'];
 
-        $c = new $ctrl();
-        if(isset($route['parm'])) $c->$act($route['parm']);
-        else $c->$act();
+        $c = new $controller();
+        if(isset($route['parm'])) $c->$action($route['parm']);
+        else $c->$action();
 	}
 
 	function setRoute($path, $target){
@@ -17,12 +17,6 @@ class Boot{
 	}
 
 	function getUri(){
-        if(_AUTH_ && empty($_SESSION['usuario_id'])){
-            return array(
-                "path" => "AppController@login"
-            );
-        }
-
 		$uri = array_values(array_filter(explode('/', $_SERVER['REQUEST_URI'])));
 
         switch (count($uri)){
@@ -38,7 +32,7 @@ class Boot{
                 break;
         }
 
-		$resp['path'] = "AppController@error";
+		$resp['path'] = ['AppController','error'];
         if(isset($this->route[$path])){
             $resp['path'] = $this->route[$path];
             if(!empty($parm)){

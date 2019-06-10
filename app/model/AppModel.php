@@ -3,7 +3,7 @@
 class AppModel extends Database
 {
 
-    function getLista()
+    function getList()
     {
         $con = $this->connect();
         $sql = "SELECT * FROM dbname";

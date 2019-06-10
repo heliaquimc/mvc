@@ -1,21 +1,12 @@
 <?php
 
 session_start();
-
-if($_SERVER['HTTP_HOST'] == 'localhost'){
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-}
-
-date_default_timezone_set('America/Sao_Paulo');
-
-define('_AUTH_', true);
 define('_HEADER_', '../app/view/header');
 define('_FOOTER_', '../app/view/footer');
-
+date_default_timezone_set('America/Sao_Paulo');
 function pre($cont){echo "<pre>"; print_r($cont); echo "</pre>";}
 function prex($cont){echo "<pre>"; print_r($cont); echo "</pre>"; exit;}
+if(true){ error_reporting(E_ALL);ini_set('display_errors', 1);ini_set('display_startup_errors', 1);}
 
 function __autoload($class){
     $arrFolder = ['core', 'app/controller', 'app/model', 'app/view'];
@@ -28,6 +19,6 @@ function __autoload($class){
 }
 
 $b = new Boot();
-$b->setRoute('/', 'AppController@home');
-$b->setRoute('test', 'AppController@test');
+$b->setRoute('/', ['AppController','home']);
+$b->setRoute('test', ['AppController','test']);
 $b->init();
